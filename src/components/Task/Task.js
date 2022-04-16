@@ -39,7 +39,6 @@ const Task = ({title, taskId, state}) => {
         const {detail} = event
 
         //Single click
-        console.log(state)
 
         if (detail === 1) {
             setTimer(setTimeout(() => {
@@ -49,7 +48,6 @@ const Task = ({title, taskId, state}) => {
 
         //DoubleClick
         if (detail === 2) {
-            console.log('double')
             setIsVisible(!isVisible)
             clearTimeout(timer)
         }

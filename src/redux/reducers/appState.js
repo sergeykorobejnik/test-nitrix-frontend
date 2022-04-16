@@ -1,15 +1,18 @@
-import {CHANGE_AUTH_STATE, FILTER_BY, FILTER_CLEAR, PUSH_SINGLE_TASK, PUSH_TASKS_TO_STATE} from "../actions/actioTypes";
+import {
+    CHANGE_AUTH_STATE, CLEAR_ERROR,
+    FILTER_BY,
+    FILTER_CLEAR,
+    PUSH_SINGLE_TASK,
+    PUSH_TASKS_TO_STATE,
+    SET_NEW_ERROR
+} from "../actions/actioTypes";
 import produce from "immer";
 
 const initialState = {
     isAuth: false,
-    error: {
-        isError: false,
-        body: ''
-    },
+    error: "",
     taskArr: [],
     filteredArr: []
-
 }
 
 function appState (state = initialState, action) {
@@ -17,6 +20,18 @@ function appState (state = initialState, action) {
         case CHANGE_AUTH_STATE : {
             return produce(state, draft => {
                 draft.isAuth = action.payload
+            })
+        }
+
+        case SET_NEW_ERROR : {
+            return produce(state, draft => {
+                draft.error = action.payload
+            })
+        }
+
+        case CLEAR_ERROR : {
+            return produce(state, draft => {
+                draft.error = ""
             })
         }
 

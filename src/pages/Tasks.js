@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import Task from "../components/Task/Task";
-import {getTasks} from "../redux/actions/actions";
+import {getTasks, setError} from "../redux/actions/actions";
 import {apiAddTask, apiClearTasks} from "../api/api";
 import Statistics from "../components/Statistics/Statistics";
 import TasksFilter from "../components/TasksFilter/TasksFilter";
@@ -113,11 +113,15 @@ const Tasks = props => {
     }
 
     const postTask = async inputValue => {
-        await apiAddTask({
-            state: 0,
-            title: inputValue
-        })
-        await dispatch(getTasks())
+        try {
+            await apiAddTask({
+                state: 0,
+                title: inputValue
+            })
+            await dispatch(getTasks())
+        } catch (e) {
+            dispatch(dispatch(setError(e.response.data.message)))
+        }
     }
 
     const handleInput = (event) => {

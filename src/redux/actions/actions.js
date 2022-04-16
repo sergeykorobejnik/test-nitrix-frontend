@@ -26,8 +26,9 @@ export const authCheck = () => async dispatch => {
         if(res.status === 200) dispatch(setAuth(true))
 
     } catch (e) {
-        dispatch(setAuth(false))
         console.log(e)
+        dispatch(setAuth(false))
+        dispatch(setError(e.response.data.message))
     }
 }
 
@@ -45,7 +46,7 @@ export const userLogin = (payload) => async dispatch => {
         }
     } catch (e) {
         console.log(e)
-
+        dispatch(setError(e.response.data.message))
     }
 }
 
@@ -63,6 +64,7 @@ export const userRegister = (payload) => async dispatch => {
 
     } catch (e) {
         console.log(e)
+        dispatch(setError(e.response.data.message))
     }
 }
 
@@ -75,6 +77,7 @@ export const getTasks = () => async dispatch => {
 
     } catch (e) {
         console.log(e.message)
+        dispatch(setError(e.response.data.message))
     }
 }
 
@@ -86,6 +89,7 @@ export const updateTask = payload => async dispatch => {
 
     } catch (e) {
         console.log(e.message)
+        dispatch(setError(e.response.data.message))
     }
 }
 
@@ -111,16 +115,15 @@ export const clearFilter = payload => {
 
 
 
-const setError= payload => {
+export const setError= payload => {
     return {
         type: SET_NEW_ERROR,
         payload
     }
-
 }
 
 
-const clearError = () => {
+export const clearError = () => {
     return {
         type: CLEAR_ERROR,
     }

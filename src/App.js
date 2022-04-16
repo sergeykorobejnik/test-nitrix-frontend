@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {authCheck} from "./redux/actions/actions";
 import {useEffect} from "react";
 import Tasks from "./pages/Tasks";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 function App() {
     const dispatch = useDispatch()
@@ -17,17 +18,18 @@ function App() {
 
     return (
         <div className="App">
-          <Routes>
-            <Route path='/test-nitrix-frontend' element={<Layout/>}>
-                <Route index element={<IndexPage/>}/>
-                <Route path='auth/:type' element={<AuthPage/>}/>
-                <Route path='tasks' element={
-                    <PrivatePages>
-                        <Tasks/>
-                    </PrivatePages>
-                }/>
-            </Route>
-          </Routes>
+            <ErrorMessage/>
+              <Routes>
+                <Route path='/test-nitrix-frontend' element={<Layout/>}>
+                    <Route index element={<IndexPage/>}/>
+                    <Route path='auth/:type' element={<AuthPage/>}/>
+                    <Route path='tasks' element={
+                        <PrivatePages>
+                            <Tasks/>
+                        </PrivatePages>
+                    }/>
+                </Route>
+              </Routes>
         </div>
       );
 }
