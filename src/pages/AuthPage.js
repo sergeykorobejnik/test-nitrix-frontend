@@ -57,7 +57,7 @@ const AuthPage = props => {
     })
 
     useEffect(() => {
-        if(isAuth) navigate('/tasks', {replacer: true})
+        if(isAuth) navigate('/test-nitrix-frontend/tasks', {replacer: true})
     }, [isAuth])
 
     const handleChanges = (key, event) => {

@@ -58,12 +58,12 @@ const Layout = props => {
     return (
         <>
             <Header>
-                <Link to={'/'} className={"logo"}><h1>Todo App</h1></Link>
+                <Link to={''} className={"logo"}><h1>Todo App</h1></Link>
                 {
                     isAuth ? null :
                         <div className={'auth-buttons'}>
-                            <Link to={"/auth/register"} className={'auth-link'} >Sign Up</Link>
-                            <Link to={"/auth/login"} className={'auth-link'}>Sign In</Link>
+                            <Link to={"auth/register"} className={'auth-link'} >Sign Up</Link>
+                            <Link to={"auth/login"} className={'auth-link'}>Sign In</Link>
                         </div>
                 }
             </Header>

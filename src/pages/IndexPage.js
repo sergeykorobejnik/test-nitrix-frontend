@@ -38,8 +38,8 @@ const IndexPage = props => {
         <Container>
             <h1>Get started</h1>
             <p>This small application was developed as a test case for Nitrix.</p>
-            <Link to={"/auth/register"}>Go to auth page</Link>
-            <Link to={"/tasks"}>Go to app</Link>
+            <Link to="auth/register">Go to auth page</Link>
+            <Link to="tasks">Go to app</Link>
         </Container>
     );
 };
