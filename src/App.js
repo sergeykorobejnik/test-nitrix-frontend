@@ -18,7 +18,7 @@ function App() {
     return (
         <div className="App">
           <Routes>
-            <Route path='/' element={<Layout/>}>
+            <Route path='/test-nitrix-frontend' element={<Layout/>}>
                 <Route index element={<IndexPage/>}/>
                 <Route path='auth/:type' element={<AuthPage/>}/>
                 <Route path='tasks' element={
