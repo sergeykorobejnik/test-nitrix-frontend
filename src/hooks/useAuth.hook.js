@@ -1,0 +1,6 @@
+
+const useAuth = ({}) => {
+
+}
+
+export {useAuth}

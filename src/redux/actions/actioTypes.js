@@ -1,0 +1,7 @@
+export const CHANGE_AUTH_STATE = "CHANGE_AUTH_STATE"
+export const SET_NEW_ERROR = "SET_NEW_ERROR"
+export const CLEAR_ERROR = "CLEAR_ERROR"
+export const PUSH_TASKS_TO_STATE = "PUSH_TASKS_TO_STATE"
+export const PUSH_SINGLE_TASK = "PUSH_SINGLE_TASK"
+export const FILTER_BY = "FILTER_BY"
+export const FILTER_CLEAR = "FILTER_CLEAR"

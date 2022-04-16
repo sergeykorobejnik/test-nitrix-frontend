@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import {Routes, Route} from "react-router-dom";
+import Layout from "./pages/Layout";
+import AuthPage from "./pages/AuthPage";
+import PrivatePages from "./components/hoc/PrivatePages";
+import IndexPage from "./pages/IndexPage";
+import {useDispatch, useSelector} from "react-redux";
+import {authCheck} from "./redux/actions/actions";
+import {useEffect} from "react";
+import Tasks from "./pages/Tasks";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(authCheck())
+        }, [])
+
+    return (
+        <div className="App">
+          <Routes>
+            <Route path='/' element={<Layout/>}>
+                <Route index element={<IndexPage/>}/>
+                <Route path='auth/:type' element={<AuthPage/>}/>
+                <Route path='tasks' element={
+                    <PrivatePages>
+                        <Tasks/>
+                    </PrivatePages>
+                }/>
+            </Route>
+          </Routes>
+        </div>
+      );
 }
 
 export default App;
